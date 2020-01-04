@@ -1,0 +1,769 @@
+; M. Wajahat Shahid
+; 2018-CS-113
+
+INCLUDE Irvine32.inc
+
+.data
+
+welcome BYTE "....Welcome to Microgle Halwai Centre....",0dh,0ah,0
+welcome1 BYTE "Please Select you Desired Option",0dh,0ah,"1. Place an Order",0dh,0ah,"2. Show SalesList",0dh,0ah,"3. Exit",0dh,0ah,0
+
+menu BYTE "Please Select your Desired Desert:",0
+m1 BYTE "1. Halwa",0
+m2 BYTE "2. Barfi",0
+m3 BYTE "3. Kheer",0
+m4 BYTE "4. Ladoo",0
+m5 BYTE "5. General",0
+
+h1 BYTE "1. Sohen Halwa",0
+h2 BYTE "2. Gajjar ka Halwa",0
+h3 BYTE "3. Daal ka Halwa",0
+h4 BYTE "4. Suji ka Halwa",0
+h5 BYTE "5. Akhrot ka Halwa",0
+h6 BYTE "6. Badam ka Halwa",0
+h7 BYTE "7. Besan ka Halwa",0
+h8 BYTE "8. Kaddu ka Halwa",0
+
+b1 BYTE "1. Badam ki Barfi",0
+b2 BYTE "2. Coconut Barfi",0
+b3 BYTE "3. Kaju ki Barfi",0
+b4 BYTE "4. Pista Barfi",0
+b5 BYTE "5. Gajar ki Barfi",0
+b6 BYTE "6. Mawa Barfi",0
+b7 BYTE "7. Til ki Barfi",0
+b8 BYTE "8. Besan ki Barfi",0
+
+kh1 BYTE "1. Sheer Khorma",0
+kh2 BYTE "2. Sagudana Kheer",0
+kh3 BYTE "3. Shahi Tukrey",0
+kh4 BYTE "4. Sewaiyan",0
+kh5 BYTE "5. Feerni",0
+kh6 BYTE "6. Ras Malai",0
+kh7 BYTE "7. Rabri",0
+kh8 BYTE "8. Badam Kheer",0
+kh9 BYTE "9. Kaddu ki Kheer",0
+kh10 BYTE "10. Gajar ki Kheer (Gajrella)",0
+kh11 BYTE "11. Besan ki Kheer",0
+
+l1 BYTE "1. Boondi ka Ladoo",0
+l2 BYTE "2. Mauti-Choor ka Ladoo",0
+l3 BYTE "3. Coconut Ladoo",0
+l4 BYTE "4. Besan ka Ladoo",0
+l5 BYTE "5. Til ka Ladoo",0
+
+g1 BYTE "1. Gulab Jamun",0
+g2 BYTE "2. Jalebi",0
+g3 BYTE "3. Patisa",0
+g4 BYTE "4. Ras-Gulley",0
+
+qn BYTE "Please Enter the Quantity of Your desert in KGs: ",0dh,0ah,0
+
+pack BYTE "Please Select your Desired Packing:",0dh,0ah,0
+p1 BYTE "1. Regular",0
+p2 BYTE "2. Special",0
+p3 BYTE "3. Festivity",0
+p4 BYTE "4. Marriage",0
+p5 BYTE "5. Eid",0
+p6 BYTE "6. Jumbo",0
+
+topping BYTE "Please select the toping :",0dh,0ah,0
+t1 BYTE "1. Premium",0
+t2 BYTE "2. Mediocre",0
+t3 BYTE "3. Rare",0
+t4 BYTE "4. No Toping",0
+
+hd BYTE "Please Select Home Delivery Order or Not",0dh,0ah,0
+hd1 BYTE "1. Yes",0
+hd2 BYTE "2. No",0
+
+khoya BYTE "Please Select Additional Khoya (if applicable):",0dh,0ah,0
+kho1 BYTE "1. Yes",0
+kho2 BYTE "2. No",0
+ 
+err BYTE "Sorry, You have entered an invalid value!",0dh,0ah,"Please Enter a valid value...",0dh,0ah,0
+
+res dword 0
+sum dword ?
+
+found dword 0
+match BYTE "5234",0
+matchstring BYTE 25 DUP(?)
+
+.code
+
+main PROC
+
+getLine PROTO, line:DWORD, inputStr:PTR BYTE, outputStr:PTR BYTE
+
+call discount
+mov eax,found
+call writeint
+
+mov edx,offset welcome
+call writestring
+
+start:
+mov edx,offset welcome1
+call writestring
+call readint
+cmp eax,1
+je menutag
+cmp eax,3
+je ext
+jmp start
+
+
+menutag:
+mov edx,offset menu
+call writestring
+call crlf
+mov edx,offset m1
+call writestring
+call crlf
+mov edx,offset m2
+call writestring
+call crlf
+mov edx,offset m3
+call writestring
+call crlf
+mov edx,offset m4
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je m1tag
+cmp eax,2
+je m2tag
+cmp eax,3
+je m3tag
+cmp eax,4
+je m4tag
+
+mov edx,offset err
+call writestring
+jmp menutag
+
+
+m1tag:
+mov edx,offset h1
+call writestring
+call crlf
+mov edx,offset h2
+call writestring
+call crlf
+mov edx,offset h3
+call writestring
+call crlf
+mov edx,offset h4
+call writestring
+call crlf
+mov edx,offset h5
+call writestring
+call crlf
+mov edx,offset h6
+call writestring
+call crlf
+mov edx,offset h7
+call writestring
+call crlf
+mov edx,offset h8
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je h1tag
+cmp eax,2
+je h2tag
+cmp eax,3
+je h3tag
+cmp eax,4
+je h4tag
+cmp eax,5
+je h5tag
+cmp eax,6
+je h6tag
+cmp eax,7
+je h7tag
+cmp eax,8
+je h8tag
+
+mov edx,offset err
+call writestring
+jmp m1tag
+
+h1tag:
+mov res,650
+jmp qntag
+h2tag:
+mov res,650
+jmp qntag
+h3tag:
+mov res,650
+jmp qntag
+h4tag:
+mov res,650
+jmp qntag
+h5tag:
+mov res,650
+jmp qntag
+h6tag:
+mov res,650
+jmp qntag
+h7tag:
+mov res,650
+jmp qntag
+h8tag:
+mov res,650
+jmp qntag
+
+m2tag:
+
+mov edx,offset b1
+call writestring
+call crlf
+mov edx,offset b2
+call writestring
+call crlf
+mov edx,offset b3
+call writestring
+call crlf
+mov edx,offset b4
+call writestring
+call crlf
+mov edx,offset b5
+call writestring
+call crlf
+mov edx,offset b6
+call writestring
+call crlf
+mov edx,offset b7
+call writestring
+call crlf
+mov edx,offset b8
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je b1tag
+cmp eax,2
+je b2tag
+cmp eax,3
+je b3tag
+cmp eax,4
+je b4tag
+cmp eax,5
+je b5tag
+cmp eax,6
+je b6tag
+cmp eax,7
+je b7tag
+cmp eax,8
+je b8tag
+
+
+mov edx,offset err
+call writestring
+jmp m2tag
+
+b1tag:
+add res,450
+jmp qntag
+b2tag:
+add res,450
+jmp qntag
+b3tag:
+add res,450
+jmp qntag
+b4tag:
+add res,450
+jmp qntag
+b5tag:
+add res,450
+jmp qntag
+b6tag:
+add res,450
+jmp qntag
+b7tag:
+add res,450
+jmp qntag
+b8tag:
+mov res,450
+jmp qntag
+
+m3tag:
+
+mov edx,offset kh1
+call writestring
+call crlf
+mov edx,offset kh2
+call writestring
+call crlf
+mov edx,offset kh3
+call writestring
+call crlf
+mov edx,offset kh4
+call writestring
+call crlf
+mov edx,offset kh5
+call writestring
+call crlf
+mov edx,offset kh6
+call writestring
+call crlf
+mov edx,offset kh7
+call writestring
+call crlf
+mov edx,offset kh8
+call writestring
+call crlf
+mov edx,offset kh9
+call writestring
+call crlf
+mov edx,offset kh10
+call writestring
+call crlf
+mov edx,offset kh11
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je kh1tag
+cmp eax,2
+je kh2tag
+cmp eax,3
+je kh3tag
+cmp eax,4
+je kh4tag
+cmp eax,5
+je kh5tag
+cmp eax,6
+je kh6tag
+cmp eax,7
+je kh7tag
+cmp eax,8
+je kh8tag
+cmp eax,9
+je kh9tag
+cmp eax,10
+je kh10tag
+cmp eax,11
+je kh11tag
+
+mov edx,offset err
+call writestring
+jmp m3tag
+
+kh1tag:
+add res,525
+jmp qntag
+kh2tag:
+add res,525
+jmp qntag
+kh3tag:
+add res,525
+jmp qntag
+kh4tag:
+add res,525
+jmp qntag
+kh5tag:
+add res,525
+jmp qntag
+kh6tag:
+add res,525
+jmp qntag
+kh7tag:
+add res,525
+jmp qntag
+kh8tag:
+add res,525
+jmp qntag
+kh9tag:
+add res,525
+jmp qntag
+kh10tag:
+add res,525
+jmp qntag
+kh11tag:
+add res,525
+jmp qntag
+
+m4tag:
+
+mov edx,offset l1
+call writestring
+call crlf
+mov edx,offset l2
+call writestring
+call crlf
+mov edx,offset l3
+call writestring
+call crlf
+mov edx,offset l4
+call writestring
+call crlf
+mov edx,offset l5
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je l1tag
+cmp eax,2
+je l2tag
+cmp eax,3
+je l3tag
+cmp eax,4
+je l4tag
+cmp eax,5
+je l5tag
+
+
+mov edx,offset err
+call writestring
+jmp m4tag
+
+l1tag:
+add res,375
+jmp qntag
+l2tag:
+add res,375
+jmp qntag
+l3tag:
+add res,375
+jmp qntag
+l4tag:
+add res,375
+jmp qntag
+l5tag:
+add res,375
+jmp qntag
+
+m5tag:
+
+mov edx,offset g1
+call writestring
+call crlf
+mov edx,offset g2
+call writestring
+call crlf
+mov edx,offset g3
+call writestring
+call crlf
+mov edx,offset g4
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je g1tag
+cmp eax,2
+je g2tag
+cmp eax,3
+je g3tag
+cmp eax,4
+je g4tag
+
+mov edx,offset err
+call writestring
+jmp m5tag
+
+g1tag:
+add res,475
+jmp qntag
+g2tag:
+add res,475
+jmp qntag
+g3tag:
+add res,475
+jmp qntag
+g4tag:
+add res,475
+jmp qntag
+
+qntag:
+mov edx,offset qn
+call writestring
+call readint
+cmp eax,0
+jle qnError
+mul res
+mov res,eax
+jmp packtag
+
+qnError:
+mov edx,offset err
+call writestring
+jmp qntag
+
+packtag:
+
+mov edx, offset pack
+call writestring
+call crlf
+mov edx,offset p1
+call writestring
+call crlf
+mov edx,offset p2
+call writestring
+call crlf
+mov edx,offset p3
+call writestring
+call crlf
+mov edx,offset p4
+call writestring
+call crlf
+mov edx,offset p5
+call writestring
+call crlf
+mov edx,offset p6
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je p1tag
+cmp eax,2
+je p2tag
+cmp eax,3
+je p3tag
+cmp eax,4
+je p4tag
+cmp eax,5
+je p5tag
+cmp eax,6
+je p6tag
+mov edx,offset err
+call writestring
+jmp packtag
+
+p1tag:
+add res,125
+jmp toppingtag
+p2tag:
+add res,125
+jmp toppingtag
+p3tag:
+add res,125
+jmp toppingtag
+p4tag:
+add res,125
+jmp toppingtag
+p5tag:
+add res,125
+jmp toppingtag
+p6tag:
+add res,125
+jmp toppingtag
+
+toppingtag:
+
+mov edx, offset topping
+call writestring
+call crlf
+mov edx,offset t1
+call writestring
+call crlf
+mov edx,offset t2
+call writestring
+call crlf
+mov edx,offset t3
+call writestring
+call crlf
+mov edx,offset t4
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je t1tag
+cmp eax,2
+je t2tag
+cmp eax,3
+je t3tag
+cmp eax,4
+je t4tag
+
+mov edx,offset err
+call writestring
+jmp toppingtag
+
+t1tag:
+add res,225
+jmp hdtag
+t2tag:
+add res,225
+jmp hdtag
+t3tag:
+add res,225
+jmp hdtag
+t4tag:
+add res,225
+jmp hdtag
+
+hdtag:
+
+mov edx, offset hd
+call writestring
+call crlf
+mov edx,offset hd1
+call writestring
+call crlf
+mov edx,offset hd2
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je hd1tag
+cmp eax,2
+je hd2tag
+
+mov edx,offset err
+call writestring
+jmp hdtag
+
+hd1tag:
+add res,250
+jmp khoyatag
+hd2tag:
+jmp khoyatag
+
+khoyatag:
+
+mov edx, offset khoya
+call writestring
+call crlf
+mov edx,offset kho1
+call writestring
+call crlf
+mov edx,offset kho2
+call writestring
+call crlf
+
+call readint
+cmp eax,1
+je kho1tag
+cmp eax,2
+je kho2tag
+
+mov edx,offset err
+call writestring
+jmp hdtag
+
+
+kho1tag:
+add res,250
+jmp finalb
+kho2tag:
+jmp finalb
+
+finalb:
+
+jmp start
+
+ext:
+exit
+main ENDP
+
+discount proc uses eax ecx edx esi edi
+
+.data
+count dword 1
+.code
+getdisc proto, lin:DWORD
+mov esi, offset match
+mov edi, offset matchstring
+mov ecx, 25
+
+disco:
+
+invoke getdisc,count
+mov eax,[esi]
+cmp eax,[edi]
+je foundtag
+inc count
+loop disco
+
+ret
+
+foundtag:
+inc found
+ret
+discount endp
+
+getLine PROC uses eax ebx esi, line:DWORD, inputStr:PTR BYTE, outputStr:PTR BYTE
+.data
+	lineCount DWORD 1
+	currChar BYTE ?
+.code
+	MOV esi,outputStr
+	MOV ebx,inputStr
+
+	MOV al,[ebx]
+	MOV currChar,al
+
+	.WHILE currChar != 000h
+		.WHILE currChar != 00dh
+		;check if the line is desired line then start copying characters until 00dh appears
+			MOV eax,line
+			.IF lineCount == eax
+				MOV al,currChar
+				MOV [esi],al
+				INC esi
+			.ENDIF
+			INC ebx
+			MOV al,[ebx]
+			MOV currChar,al
+		.ENDW
+
+		;If the last loop was of desired line, then break main loop.
+		MOV eax,line
+		.IF	lineCount == eax
+			.BREAK
+		.ENDIF
+
+		INC lineCount
+		ADD ebx,2				;adding two because to skip 00ah character
+		MOV al,[ebx]
+		MOV currChar,al
+	.ENDW
+	RET
+getLine ENDP
+
+getdisc PROC uses eax ebx ecx edx, lin:DWORD
+
+.data
+filename BYTE "test.txt",0
+BUFFER_SIZE = 5000
+buffer BYTE BUFFER_SIZE DUP(?)
+filehandle DWORD ?
+counter dword 1
+
+.code
+getLine PROTO, line:DWORD, inputStr:PTR BYTE, outputStr:PTR BYTE
+
+	MOV edx,OFFSET filename
+	CALL OpenInputFile
+	MOV filehandle,eax
+
+	INVOKE SetFilePointer,
+		filehandle,
+		0,
+		0,
+		FILE_BEGIN
+
+	MOV eax,filehandle
+	MOV edx,OFFSET buffer
+	MOV ecx,BUFFER_SIZE
+	CALL ReadFromFile
+
+	INVOKE getLine, lin, ADDR buffer, ADDR matchstring
+
+	ret
+getdisc ENDP
+
+END main

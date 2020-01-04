@@ -1,0 +1,80 @@
+INCLUDE Irvine32.inc
+
+.data
+
+filename BYTE "test.txt",0
+BUFFER_SIZE = 5000
+buffer BYTE BUFFER_SIZE DUP(?)
+filehandle DWORD ?
+str1 BYTE BUFFER_SIZE DUP(?)
+
+.code
+
+getLine PROTO, line:DWORD, inputStr:PTR BYTE, outputStr:PTR BYTE
+
+main PROC
+
+	MOV edx,OFFSET filename
+	CALL OpenInputFile
+	MOV filehandle,eax
+
+	INVOKE SetFilePointer,
+		filehandle,
+		0,
+		0,
+		FILE_BEGIN
+
+	MOV eax,filehandle
+	MOV edx,OFFSET buffer
+	MOV ecx,BUFFER_SIZE
+	CALL ReadFromFile
+
+	INVOKE getLine, 1, ADDR buffer, ADDR str1
+
+	MOV edx,OFFSET str1
+	CALL WriteString
+	
+	CALL ReadInt
+	INVOKE ExitProcess, 0
+main ENDP
+
+getLine PROC uses eax ebx esi, line:DWORD, inputStr:PTR BYTE, outputStr:PTR BYTE
+.data
+	lineCount DWORD 1
+	currChar BYTE ?
+.code
+	MOV esi,outputStr
+	MOV ebx,inputStr
+
+	MOV al,[ebx]
+	MOV currChar,al
+
+	.WHILE currChar != 000h
+		.WHILE currChar != 00dh
+		;check if the line is desired line then start copying characters until 00dh appears
+			MOV eax,line
+			.IF lineCount == eax
+				MOV al,currChar
+				MOV [esi],al
+				INC esi
+			.ENDIF
+			INC ebx
+			MOV al,[ebx]
+			MOV currChar,al
+		.ENDW
+
+		;If the last loop was of desired line, then break main loop.
+		MOV eax,line
+		.IF	lineCount == eax
+			.BREAK
+		.ENDIF
+
+		INC lineCount
+		ADD ebx,2             ;adding two because to skip 00ah character
+		MOV al,[ebx]
+		MOV currChar,al
+	.ENDW
+	RET
+getLine ENDP
+
+END main

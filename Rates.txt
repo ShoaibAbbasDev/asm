@@ -1,0 +1,76 @@
+			Rate List Microgle Halwai Center
+
+Halwa
+
+Sohen Halwa		Rs. 650
+Gajjar ka Halwa		Rs. 650
+Daal ka Halwa		Rs. 650
+Suji ka Halwa		Rs. 650
+Akhrot ka Halwa		Rs. 650
+Badam ka Halwa		Rs. 650
+Besan ka Halwa		Rs. 650
+Kaddu ka Halwa		Rs. 650
+
+Barfi
+
+Badam ki Barfi		Rs. 450
+Coconut Barfi		Rs. 450
+Kaju ki Barfi		Rs. 450
+Pista Barfi		Rs. 450
+Gajar ki Barfi		Rs. 450
+Mawa Barfi		Rs. 450
+Til ki Barfi		Rs. 450
+Besan ki Barfi		Rs. 450
+
+Kheer
+
+Sheer Khorma			Rs. 525
+Sagudana 			Rs. 525
+Shahi Tukrey			Rs. 525
+Sewaiyan			Rs. 525
+Feerni				Rs. 525
+Ras Malai			Rs. 525
+Rabri				Rs. 525
+Badam Kheer			Rs. 525
+Kaddu ki Kheer			Rs. 525
+Gajar ki Kheer (Gajrella)	Rs. 525
+Besan ki Kheer			Rs. 525
+
+Ladoo
+
+Boondi ka Ladoo		Rs. 375
+Mauti-Choor ka Ladoo	Rs. 375
+Coconut Ladoo		Rs. 375
+Besan ka Ladoo		Rs. 375
+Til ka Ladoo		Rs. 375
+
+General
+
+Gulab Jamun		Rs. 475
+Jalebi			Rs. 475
+Patisa			Rs. 475
+Ras-Gulley		Rs. 475
+
+Packing
+
+Regular		Rs. 125
+Special		Rs. 125
+Festivity	Rs. 125
+Marriage	Rs. 125
+Eid		Rs. 125
+Jumbo		Rs. 125
+
+Topping
+
+Premium		Rs. 225
+Mediocre	Rs. 225
+Rare		Rs. 225
+No Topping	Rs. 225
+
+Home Delivery Charges
+
+Delivery Charges Rs. 250
+
+Additional Khoya Charges (If Applicable)
+
+Khoya Charges Rs. 250
