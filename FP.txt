@@ -5,11 +5,13 @@ INCLUDE Irvine32.inc
 
 .data
 
+; wellcome string
 welcome BYTE "....Welcome to Microgle Halwai Center....",0dh,0ah,0dh,0ah,0
 welcome1 BYTE "Please Select you Desired Option",0dh,0ah,"1. Place an Order",0dh,0ah,"2. Show Rate List",0dh,0ah,"3. Show Customers List",0dh,0ah,"4. Exit",0dh,0ah,0
 
 cname BYTE "Please enter your name",0dh,0ah,0
 
+;menu list
 menu BYTE "Please Select your Desired Desert:",0
 m1 BYTE "1. Halwa",0
 m2 BYTE "2. Barfi",0
@@ -17,6 +19,7 @@ m3 BYTE "3. Kheer",0
 m4 BYTE "4. Ladoo",0
 m5 BYTE "5. General",0
 
+;Halwa dishes
 h1 BYTE "1. Sohen Halwa",0
 h2 BYTE "2. Gajjar ka Halwa",0
 h3 BYTE "3. Daal ka Halwa",0
@@ -26,6 +29,8 @@ h6 BYTE "6. Badam ka Halwa",0
 h7 BYTE "7. Besan ka Halwa",0
 h8 BYTE "8. Kaddu ka Halwa",0
 
+
+; barfi list
 b1 BYTE "1. Badam ki Barfi",0
 b2 BYTE "2. Coconut Barfi",0
 b3 BYTE "3. Kaju ki Barfi",0
@@ -35,6 +40,7 @@ b6 BYTE "6. Mawa Barfi",0
 b7 BYTE "7. Til ki Barfi",0
 b8 BYTE "8. Besan ki Barfi",0
 
+; sweet dishes
 kh1 BYTE "1. Sheer Khorma",0
 kh2 BYTE "2. Sagudana Kheer",0
 kh3 BYTE "3. Shahi Tukrey",0
@@ -47,6 +53,8 @@ kh9 BYTE "9. Kaddu ki Kheer",0
 kh10 BYTE "10. Gajar ki Kheer (Gajrella)",0
 kh11 BYTE "11. Besan ki Kheer",0
 
+
+; ladoo menu
 l1 BYTE "1. Boondi ka Ladoo",0
 l2 BYTE "2. Mauti-Choor ka Ladoo",0
 l3 BYTE "3. Coconut Ladoo",0

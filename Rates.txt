@@ -1,6 +1,6 @@
-			Rate List Microgle Halwai Center
+		*******Rate List Microgle Halwai Center*******
 
-Halwa
+Halwa:
 
 Sohen Halwa		Rs. 650
 Gajjar ka Halwa		Rs. 650
@@ -9,9 +9,10 @@ Suji ka Halwa		Rs. 650
 Akhrot ka Halwa		Rs. 650
 Badam ka Halwa		Rs. 650
 Besan ka Halwa		Rs. 650
+petha ka Halaw          Rs. 700
 Kaddu ka Halwa		Rs. 650
 
-Barfi
+Barfi:
 
 Badam ki Barfi		Rs. 450
 Coconut Barfi		Rs. 450
@@ -21,8 +22,9 @@ Gajar ki Barfi		Rs. 450
 Mawa Barfi		Rs. 450
 Til ki Barfi		Rs. 450
 Besan ki Barfi		Rs. 450
+Dodh vale Barfi         Rs. 600
 
-Kheer
+Kheer:
 
 Sheer Khorma			Rs. 525
 Sagudana 			Rs. 525
@@ -35,8 +37,11 @@ Badam Kheer			Rs. 525
 Kaddu ki Kheer			Rs. 525
 Gajar ki Kheer (Gajrella)	Rs. 525
 Besan ki Kheer			Rs. 525
+Chawal ki kheer                 Rs. 500
 
-Ladoo
+
+
+Ladoo:
 
 Boondi ka Ladoo		Rs. 375
 Mauti-Choor ka Ladoo	Rs. 375
@@ -44,14 +49,15 @@ Coconut Ladoo		Rs. 375
 Besan ka Ladoo		Rs. 375
 Til ka Ladoo		Rs. 375
 
-General
+General:
 
 Gulab Jamun		Rs. 475
 Jalebi			Rs. 475
 Patisa			Rs. 475
-Ras-Gulley		Rs. 475
+Ras-Gulley(color vala )	Rs. 475
 
-Packing
+
+Packing:
 
 Regular		Rs. 125
 Special		Rs. 125
